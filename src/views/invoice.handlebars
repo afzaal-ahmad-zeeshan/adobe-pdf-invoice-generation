@@ -1,0 +1,17 @@
+<h1><b>Invoices</b>: Generate for customers.</h1>
+<hr />
+<p>Following ({{files.length}}) invoices are ready, select to generate an invoice and deliver to the customer:</p>
+<form method="POST">
+    <ul>
+        {{#each files }}
+            <li><input type="checkbox" name="vendor" value="{{this}}" id="file-{{@index}}" /> <label for="file-{{@index}}">{{this}}</label></li>
+        {{/each}}
+    </ul>
+    <input type="submit" value="Send invoice" />
+</form>
+
+<style>
+    ul li {
+        list-style: none;
+    }
+</style>
