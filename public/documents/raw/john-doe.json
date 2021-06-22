@@ -1,0 +1,21 @@
+{
+    "customerName": "John Doe",
+    "customerEmail": "john-doe@example.com",
+    "order": [
+        {
+            "productId": 26,
+            "productTitle": "Bandages",
+            "price": 15.82
+        },
+        {
+            "productId": 54,
+            "productTitle": "Masks",
+            "price": 25
+        },
+        {
+            "productId": 76,
+            "productTitle": "Gloves",
+            "price": 7.59
+        }
+    ]
+}

@@ -13,13 +13,20 @@ async function applyPassword(password, inputFile, outputFile) {
 
         // Create new permissions instance and add the required permissions
         const protectPDF = adobe.ProtectPDF,
-            protectPDFOptions = protectPDF.options;
+                           protectPDFOptions = protectPDF.options,
+                           permissions = protectPDFOptions.Permissions.createNew();
+
+        permissions.addPermission(adobe.Permission.PRINT_LOW_QUALITY);
+        permissions.addPermission(adobe.Permission.EDIT_DOCUMENT_ASSEMBLY);
+        permissions.addPermission(adobe.Permission.COPY_CONTENT);
 
         // Build ProtectPDF options by setting an Owner/Permissions Password, Permissions,
         // Encryption Algorithm (used for encrypting the PDF file) and specifying the type of content to encrypt.
         const options = new protectPDFOptions.PasswordProtectOptions.Builder()
-                .setUserPassword(password)
+                .setOwnerPassword(password)
+                .setPermissions(permissions)
                 .setEncryptionAlgorithm(protectPDFOptions.EncryptionAlgorithm.AES_256)
+                .setContentEncryption(protectPDFOptions.ContentEncryption.ALL_CONTENT_EXCEPT_METADATA)
                 .build();
 
         // Create a new operation instance.
